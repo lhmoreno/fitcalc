@@ -1,10 +1,11 @@
 import AppLoading from 'expo-app-loading'
 import { StyleSheet, Text } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { useFonts, JetBrainsMono_700Bold } from '@expo-google-fonts/jetbrains-mono'
-import { Poppins_400Regular } from '@expo-google-fonts/poppins'
+import { useFonts, JetBrainsMono_700Bold, JetBrainsMono_800ExtraBold } from '@expo-google-fonts/jetbrains-mono'
+import { Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins'
 import { Ionicons } from '@expo/vector-icons'
 
 import { Foods } from './src/screens/Foods'
@@ -14,8 +15,10 @@ const Tab = createBottomTabNavigator()
 
 export default function App() {
   const [fontsLoaded] = useFonts({
+    JetBrainsMono_800ExtraBold,
     JetBrainsMono_700Bold,
-    Poppins_400Regular
+    Poppins_400Regular,
+    Poppins_700Bold
   })
 
   if (!fontsLoaded) {
@@ -25,6 +28,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <SafeAreaView style={styles.container}>
+        <StatusBar style="light" />
         <Text style={styles.logoTitle}>Fitcalc</Text>
 
         <Tab.Navigator
